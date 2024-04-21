@@ -1,2 +1,4 @@
 node_modules
 .vscode
+data_guide.txt
+config.js
