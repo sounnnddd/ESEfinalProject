@@ -18,5 +18,6 @@ router.delete('/:id', controller.deleteBusByID);
 
 // Get route numbers
 router.get('/getRoutes', controller.findBusRoutes);
+router.get('/search/getRoutes', controller.searchRoutes);
 
 module.exports = router;

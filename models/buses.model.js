@@ -8,15 +8,15 @@ const busSchema = new mongoose.Schema(
       required: true,
     },
     routes: {
-      type: [String], // Array of strings
+      type: [[String]], // Array of strings
       required: true,
     },
     occt_time: {
-      type: [String], // Array of strings representing OCCT schedule time
+      type: [[String]], // Array of strings representing OCCT schedule time
       required: true,
     },
     bct_time: {
-      type: [String], // Array of strings representing BCT schedule time
+      type: [[String]], // Array of strings representing BCT schedule time
       required: true,
     },
   },

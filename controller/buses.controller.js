@@ -1,5 +1,8 @@
 const Bus = require('../models/buses.model.js');
 const busService = require('../service/buses.service.js');
+const input = require('../input.json');
+
+input_source_destination = input['source_destination'];
 
 //CRUD
 
@@ -67,13 +70,24 @@ const findBusRoutes = async (req, res) => {
     }
 }
 
+const searchRoutes = async (req, res) => {
+    try{
+        const buses = await Bus.find({ "source_destination": { $in: [input_source_destination] } });
+        res.json(buses);
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 
 module.exports = {
     saveBus,
     getAllBuses,
     updateBusByID,
     deleteBusByID,
-    findBusRoutes
+    findBusRoutes,
+    searchRoutes
 };
 
 //export all functions here
