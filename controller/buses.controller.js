@@ -59,21 +59,13 @@ const deleteBusAll = async (req, res) => {
     }
 };
 
-const findBusRoutes = async (req, res) => {
-    try{
-        const bus = await Bus.find();
-        const bus_numbers = await busService.findBusNumbers(bus);
-        res.json({ "Found the following bus numbers for your route!": bus_numbers });
-    }
-    catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-}
 
 const searchRoutes = async (req, res) => {
     try{
         const buses = await Bus.find({ "source_destination": { $in: [input_source_destination] } });
-        res.json(buses);
+        const reqd_buses = await busService.findReqdBusNumbers(buses);
+        console.log(buses);
+        res.json({ "Found the following bus numbers for your route!": reqd_buses });
     }
     catch (error) {
         res.status(500).json({ error: error.message });
@@ -86,9 +78,5 @@ module.exports = {
     getAllBuses,
     updateBusByID,
     deleteBusByID,
-    findBusRoutes,
     searchRoutes
 };
-
-//export all functions here
-// module.exports = require('./buses.controller.js');
