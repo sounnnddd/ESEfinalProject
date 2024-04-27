@@ -25,6 +25,16 @@ const getAllBuses = async (req, res) => {
     }
 };
 
+//get bus by source_destination
+const getBusBySandD = async (req, res) => {
+    try {
+        const buses = await Bus.find({ "source_destination": { $in: req.params.id } });
+        res.json(buses);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const updateBusByID = async (req, res) => {
     try {
         const bus = await Bus.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
@@ -78,5 +88,6 @@ module.exports = {
     getAllBuses,
     updateBusByID,
     deleteBusByID,
-    searchRoutes
+    searchRoutes,
+    getBusBySandD
 };
