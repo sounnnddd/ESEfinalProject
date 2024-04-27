@@ -35,8 +35,7 @@ const findReqdBusNumbers = async (filteredBuses) => {
         }
       });
 
-      routesSummary += "OCCT Timing:\n"; // OCCT Time header
-
+    
       bus.occt_time.forEach((occtTime, index) => {
         // Check if any OCCT times are close to the user-provided time
         const closeTimes = occtTime.filter((time) =>
