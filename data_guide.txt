@@ -1,0 +1,28 @@
+10 routes for OCCT
+Westside Outbound
+Downtown Center Leroy Inbound
+Downtown Center Leroy Outbound
+Westside Inbound
+University Downtown Center Outbound
+Main Street Inbound
+Main Street Outbound
+University Downtown Center Inbound
+ITC-UClub Shuttle
+Riviera Ridge - Town Square Mall Shuttle
+
+14 routes for BCT
+5	In and Out
+9	In and Out
+15	In and Out
+16 BU Express 	
+17	
+40	In and Out
+47	In and Out
+57 shopper's spl weekday	In and Out
+
+
+JSONs
+{
+    "source_destination" : "PARKWAY PLAZA_Town Square Mall",
+    "time" : "15"
+}

@@ -25,10 +25,20 @@ const getAllBuses = async (req, res) => {
     }
 };
 
+//get bus by id
+const getBusID = async (req, res) => {
+    try {
+        const buses = await Bus.findById(req.params.id);
+        res.json(buses);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 //get bus by source_destination
 const getBusBySandD = async (req, res) => {
     try {
-        const buses = await Bus.find({ "source_destination": { $in: req.params.id } });
+        const buses = await Bus.find({ "source_destination": { $in: req.params.source_destination } });
         res.json(buses);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -113,5 +123,6 @@ module.exports = {
     deleteBusByID,
     searchRoutes,
     getBusBySandD,
-    updateBusBySandD
+    updateBusBySandD,
+    getBusID
 };
