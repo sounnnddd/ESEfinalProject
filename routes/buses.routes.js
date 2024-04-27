@@ -16,6 +16,9 @@ router.get('/:id', controller.getBusBySandD);
 // Update a bus by ID
 router.put('/:id', controller.updateBusByID);
 
+// Update a bus by source_destination
+router.put('/update/:source_destination', controller.updateBusBySandD);
+
 // Delete a bus by ID
 router.delete('/:id', controller.deleteBusByID);
 

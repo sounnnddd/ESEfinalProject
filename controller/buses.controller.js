@@ -35,6 +35,29 @@ const getBusBySandD = async (req, res) => {
     }
 };
 
+//update by source_destination
+const updateBusBySandD = async (req, res) => {
+    try {
+        const sourceDestination = req.params.source_destination;
+        console.log(sourceDestination);
+
+        const updatedBus = await Bus.findOneAndUpdate(
+            { source_destination: sourceDestination },
+            req.body,
+            { new: true, runValidators: true }
+        ).lean();
+
+        if (!updatedBus) {
+            return res.status(404).json({ error: "Bus not found" });
+        }
+
+        res.json(updatedBus);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 const updateBusByID = async (req, res) => {
     try {
         const bus = await Bus.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
@@ -89,5 +112,6 @@ module.exports = {
     updateBusByID,
     deleteBusByID,
     searchRoutes,
-    getBusBySandD
+    getBusBySandD,
+    updateBusBySandD
 };
