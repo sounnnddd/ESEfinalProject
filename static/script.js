@@ -95,7 +95,7 @@ document.getElementById("bus-form").addEventListener("submit", function (e) {
             // Update the results section with the server's response
             const resultsDiv = document.getElementById("results");
 
-            let formattedData = JSON.stringify(data, null, 2).replace(/\\n/g, "<br>").replace(/"/g, "");
+            let formattedData = JSON.stringify(data, null, 2).replace(/\\n/g, "<br>").replace(/"/g, "").replace(/_/g, " -> ");
             console.log("formattedData", formattedData);
 
             if (formattedData.length === 0) {
