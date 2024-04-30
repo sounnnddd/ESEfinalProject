@@ -4,6 +4,8 @@ const input = require('../input.json');
 
 input_source_destination = input['source_destination'];
 
+let reqd_buses = "";
+
 //CRUD
 
 const saveBus = async (req, res) => {
@@ -105,16 +107,18 @@ const deleteBusAll = async (req, res) => {
 
 const searchRoutes = async (req, res) => {
     try{
-        const buses = await Bus.find({ "source_destination": { $in: [input_source_destination] } });
-        const reqd_buses = await busService.findReqdBusNumbers(buses);
-        console.log(buses);
-        res.json({ "Found the following bus numbers for your route!": reqd_buses });
+        console.log("req.body.source_destination " , req.body.source_destination);
+        console.log("req.body", req.body);
+        const buses = await Bus.find({ "source_destination": { $in: [req.body.source_destination] } });
+        reqd_buses = await busService.findReqdBusNumbers(buses, req.body);
+        console.log("reqd_buses", reqd_buses);
+
+        res.json(reqd_buses);
     }
     catch (error) {
         res.status(500).json({ error: error.message });
     }
 }
-
 
 module.exports = {
     saveBus,
@@ -124,5 +128,5 @@ module.exports = {
     searchRoutes,
     getBusBySandD,
     updateBusBySandD,
-    getBusID
+    getBusID,
 };

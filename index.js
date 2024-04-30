@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const busRoutes = require("./routes/buses.routes.js");
 const PORT = 3000;
+const path = require("path");
 
 // Middleware for parsing JSON
 app.use(express.json());
@@ -24,7 +25,10 @@ mongoose
 // Use the bus routes
 app.use("/api/buses", busRoutes);
 
+// app.use(express.static(path.join(__dirname, "./static")));
+app.use(express.static(path.join(__dirname, "static")));
+
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -1,0 +1,57 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Schedule App</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Optional: Custom styles -->
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Form with dropdowns and text input -->
+        <form id="bus-form">
+            <div class="form-row">
+                <div class="col">
+                    <!-- Source Dropdown -->
+                    <label for="source">Source:</label>
+                    <select id="source" class="form-control">
+                        <option value="">Select Source</option>
+                        <option value="PARKWAY PLAZA">PARKWAY PLAZA</option>
+                        <option value="BC Junction">BC Junction</option>
+                        <option value="Floral & Main">Floral & Main</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <!-- Destination Dropdown -->
+                    <label for="destination">Destination:</label>
+                    <select id="destination" class="form-control">
+                        <option value="">Select Destination</option>
+                        <option value="Town Square Mall">Town Square Mall</option>
+                        <option value="University Plaza">University Plaza</option>
+                        <option value="BU">BU</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <!-- Time Input -->
+                    <label for="time">Time (24-hour format):</label>
+                    <input type="text" id="time" class="form-control" placeholder="e.g., 14.30">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+
+        <!-- Div to display results -->
+        <div id="results" class="mt-5"></div>
+    </div>
+
+    <!-- Bootstrap and jQuery JavaScript (optional but recommended) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Optional: Custom JavaScript -->
+    <script src="script.js"> <!-- Link to a custom script for handling form submission and interactions -->
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 const Bus = require("../models/buses.model.js");
-const input = require("../input.json");
+// const input = require("../input.json");
 
 buses_array = ["OCCT", "BCT"];
 // Convert time string to minutes
@@ -19,9 +19,10 @@ function isTimeClose(userTime, checkTime, tolerance) {
   );
 }
 
-const findReqdBusNumbers = async (filteredBuses) => {
+const findReqdBusNumbers = async (filteredBuses, input) => {
   try {
-    const userTime = input["time"];
+    const userTime = input.time;
+    console.log("input.time", input.time);
     const tolerance = 30;
 
     let routesSummary = "";
@@ -52,7 +53,7 @@ const findReqdBusNumbers = async (filteredBuses) => {
 
       bus.bct_time.forEach((bctTime, index) => {
         // Check if any BCT times are close to the user-provided time
-        console.log(bctTime);
+        console.log("bctTime", bctTime);
         const closeTimes = bctTime.filter((time) =>
           isTimeClose(userTime, time, tolerance)
         );
@@ -66,7 +67,8 @@ const findReqdBusNumbers = async (filteredBuses) => {
       });
     });
 
-    // console.log(routesSummary);
+    console.log("routesSummary", routesSummary);
+    console.log(typeof routesSummary);
 
     return routesSummary;
   } catch {

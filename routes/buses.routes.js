@@ -26,6 +26,6 @@ router.put('/update/:source_destination', controller.updateBusBySandD);
 router.delete('/:id', controller.deleteBusByID);
 
 // Get route numbers
-router.get('/search/getRoutes', controller.searchRoutes);
+router.post('/search/getRoutes', controller.searchRoutes);
 
 module.exports = router;
